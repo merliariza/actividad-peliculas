@@ -1,0 +1,33 @@
+* {
+    text-align: center;
+    justify-content: center;
+    background-color: #1A1A1D;
+    color: white;
+}
+img {
+    justify-content: center;
+    height: 200px;
+    width: auto;
+}
+
+input{
+    height: 30px;
+    width: 40%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid rgb(196, 56, 56);
+    border-radius: 5px;
+}
+
+button {
+    cursor: pointer;
+    background-color: rgb(196, 56, 56);
+    border: none;
+    width: 15%;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(158, 5, 5);
+}
+
