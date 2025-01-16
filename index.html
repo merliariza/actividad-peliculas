@@ -3,28 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Link de archivos CSS-->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/fonts.css">
+     <!--Link de sweetalert-->
     <link rel="stylesheet" href="js/sweetalert2/dist/sweetalert2.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+     <!--Link de archivos JS-->
     <script src="js/app.js" defer></script>
     <script src="js/first-pop-up.js" defer></script>
-    <script type=module src="js/movie.js" defer></script>
     <title>Campus | Films</title>
     <link rel="icon" href="images/campuslands.png" type="image/x-icon">
 </head>
+ <!--Header-->
 <header>
+<!--Barra de navegación-->
 <div class="navbar">
+     <!--Icono de hamburger para menú desplegable-->
     <div class="hamburger" id="hamburger-icon">
         <div></div>
         <div></div>
         <div></div>
     </div>
+     <!--Título y buscador-->
     <h1>CAMPUSFILMS</h1>
     <div class="search-container">
         <input type="text" id="movie-search" placeholder="Película..." />
         <button id="search" class="nav-font--style">Buscar</button>
     </div>
+    <!--Menú de navegación-->
     <div class="navbar-menu">
     <a href="#" class="nav-font--style">Home</a>
     <a href="#" class="nav-font--style">Genre</a>
@@ -34,8 +41,9 @@
 </div>
 </header>
 <body>
-
+    <!--Contenedor de películas-->
     <div class="movies-container">
+         <!--Películas en tarjeras-->
         <div class="movies-container" id="movies-container">
         <div class="movie-card" data-title="Toy Story">
             <img src="images/toystory.jpg" alt="Toy Story">
