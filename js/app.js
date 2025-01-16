@@ -200,5 +200,11 @@ const movies = new Map([
       console.warn(error);
     });
 
+// Seleccionamos el botón del hamburguesa y el menú
+const hamburger = document.getElementById('hamburger-icon');
+const navbarMenu = document.querySelector('.navbar-menu');
 
-
+// Agregamos un evento de clic al icono del menú
+hamburger.addEventListener('click', () => {
+  navbarMenu.classList.toggle('active');
+});

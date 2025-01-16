@@ -2,54 +2,56 @@ body{
     background-color: #1A1A1D;
     text-align: center;
     justify-content: center;
-}
-img {
-    justify-content: center;
-    height: 200px;
-    width: 150px;
-    padding: 5px;
+    margin-top: 150px
 }
 
-input{
-    height: 30px;
-    width: 40%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid rgb(196, 56, 56);
-    border-radius: 5px;
+.search-container{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20%;
 }
 
-button {
-    cursor: pointer;
-    background-color: rgb(196, 56, 56);
-    border: none;
-    width: 15%;
-    border-radius: 5px;
+body .navbar input {
+  height: 30px;
+  width: 70%;
+  min-width: 58%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid rgb(196, 56, 56);
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  margin-left: 20%;
 }
 
-button:hover {
-    background-color: rgb(158, 5, 5);
+body .navbar button {
+  cursor: pointer;
+  background-color: rgb(196, 56, 56);
+  border: none;
+  height: 50px;
+  border-radius: 5px;
+}
+
+body .navbar button:hover {
+  background-color: rgb(183, 0, 0);
 }
 
 .movies-container {
-    padding-right: 10%;
-    padding-left: 10%;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap
 }
 
-.header-image {
-    height: 80px;
-    width: auto;
-}
 header{
     display: flex;
 }
 
-/*Navegation menu*/
 .navbar {
-    background-color:rgb(196, 56, 56);
+    background-color:#1A1A1D;
     overflow: hidden;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     position: fixed;
@@ -57,6 +59,8 @@ header{
     z-index: 1000;
     top: 0;
     left: 0;
+    gap: 20px;  
+    justify-content: center;
   }
   
   .navbar a {
@@ -68,8 +72,7 @@ header{
   }
   
   .navbar a:hover {
-    background-color:rgb(158, 5, 5);
-    border-radius: 4px;
+    color:rgb(196, 56, 56);
   }
   
   .navbar-menu {
@@ -79,6 +82,108 @@ header{
   }
 
 @media screen and (max-width: 768px) {
+body {
+  margin-top: 250px
+}
+
+.navbar {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+.navbar-menu.active {
+  display: flex;
+}
+.navbar a {
+  text-align: left;
+  padding: 10px 20px;
+  width: 100%;
+}
+.search-container {
+  width: 80%; 
+}
+body .navbar input {
+  width: 100%; 
+}
+body .navbar button {
+  width: 100%; 
+  margin-top: 10px; 
+}}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.movie-card {
+  max-width: 150px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  transition: transform 0.3s;
+  background-color: #1A1A1D;
+  margin: 5px;
+}
+
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+.movie-card img {
+  width: 150px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.movie-card h3 {
+  margin: 10px 0 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+
+/* Estilos para el ícono de hamburguesa */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+/* Mostrar el icono de hamburguesa solo en pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .navbar {
     flex-direction: column;
     align-items: flex-start;
@@ -99,25 +204,4 @@ header{
     padding: 10px 20px;
     width: 100%;
   }
-
-  .dropdown-content {
-    position: static;
-    background-color: #333;
-  }
-
-  .dropdown-content a {
-    padding: 10px 20px;
-  }
-}
-
-.navbar a:first-child {
-  order: -1; 
-}
-
-.logo {
-  width: 40px; 
-  height: auto;
-  display: flex; 
-  position: fixed;
-  align-items: center; 
 }

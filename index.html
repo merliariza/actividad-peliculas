@@ -9,12 +9,21 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/app.js" defer></script>
     <script type=module src="js/movie.js" defer></script>
-    <title>Movies</title>
+    <title>Campus | Films</title>
+    <link rel="icon" href="images/campuslands.png" type="image/x-icon">
 </head>
 <header>
 <div class="navbar">
-    <img class="header-image" src="images/campuslands.png">
-    <h1 >CAMPUSFILMS</h1>
+    <div class="hamburger" id="hamburger-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <h1>CAMPUSFILMS</h1>
+    <div class="search-container">
+        <input type="text" id="movie-search" placeholder="Escribe aquí..." />
+        <button id="search" class="nav-font--style">Buscar</button>
+    </div>
     <div class="navbar-menu">
     <a href="#" class="nav-font--style">Home</a>
     <a href="#" class="nav-font--style">Genre</a>
@@ -24,39 +33,90 @@
 </div>
 </header>
 <body>
-    <div>
-        <h1>Find Movies, Tv shows and more</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, a quod in officiis illum iusto magni placeat voluptatem pariatur voluptates distinctio cum unde rerum dolore excepturi totam quibusdam quam corporis.</p>
-    </div>
-
-    <div class="search-container">
-        <label for="movie-search"><p>Nombre de la pelicula a buscar:</p></label>
-        <input type="text" id="movie-search" placeholder="Escribe aquí..." />
-        <button id="search"><p>Buscar</p></button>
-    </div>
 
     <div id="Swal.fire"></div>
     <div class="movies-container">
-        <img src="images/elreyleon.jpg">
-        <img src="images/buscandoanemo.webp">
-        <img src="images/eljuegodegemelas.jpg">
-        <img src="images/Jumanji.jpg">
-        <img src="images/lafamiliaaddams.jpg">
-        <img src="images/losincreibles.jpg">
-        <img src="images/toystory.jpg">
-        <img src="images/elniñoconelpijamaderayas.jpg">
-        <img src="images/lacabañaenelbosque.jpg">
-        <img src="images/enbuscadelafelicidad.jpg">
-        <img src="images/lacabañaenelbosque.jpg">
-        <img src="images/milagrosinesperados.webp">
-        <img src="images/heroes.jpg">
-        <img src="images/el origen.jpg">
-        <img src="images/laisla.jpg">
-        <img src="images/losjuegosdelhambre.webp">
-        <img src="images/mivillanofavorito.jpg">
-        <img src="images/shrek.webp">
-        <img src="images/it.webp">
-        <img src="images/thesecretwindow.jpg">
+        <div class="movies-container" id="movies-container">
+        <div class="movie-card" data-title="Toy Story">
+            <img src="images/toystory.jpg" alt="Toy Story">
+            <p>Toy Story</p>
+        </div>
+        <div class="movie-card" data-title="El Rey León">
+            <img src="images/elreyleon.jpg" alt="El Rey León">
+            <p>El Rey León</p>
+        </div>
+        <div class="movie-card" data-title="Buscando a Nemo">
+            <img src="images/buscandoanemo.webp" alt="Buscando a Nemo">
+            <p>Buscando a Nemo</p>
+        </div>
+        <div class="movie-card" data-title="Mi Villano Favorito">
+            <img src="images/mivillanofavorito.jpg" alt="Mi Villano Favorito">
+            <p>Mi Villano Favorito</p>
+        </div>
+        <div class="movie-card" data-title="Shrek">
+            <img src="images/shrek.webp" alt="Shrek">
+            <p>Shrek</p>
+        </div>
+        <div class="movie-card" data-title="Los increibles">
+            <img src="images/losincreibles.jpg">
+            <p>Los increibles</p>
+        </div>
+        <div class="movie-card" data-title="Matilda">
+            <img src="images/matilda.webp">
+            <p>Matilda</p>
+        </div>
+        <div class="movie-card" data-title="La familia Adams">
+            <img src="images/lafamiliaaddams.jpg">
+            <p>La Familia Adams</p>
+        </div>
+        <div class="movie-card" data-title="Jumanji">
+            <img src="images/Jumanji.jpg">
+            <p>Jumanji</p>
+        </div>
+        <div class="movie-card" data-title="El juego de gemelas">
+            <img src="images/eljuegodegemelas.jpg">
+            <p>El Juego de Gemelas</p>
+        </div>
+        <div class="movie-card" data-title="El niño con el pijama de rayas">
+            <img src="images/elniñoconelpijamaderayas.jpg">
+            <p>El niño con el pijama de rayas</p>
+        </div>
+        <div class="movie-card" data-title="La Cabaña en el Bosque">
+            <img src="images/lacabañaenelbosque.jpg">
+            <p>La Cabaña en el Bosque</p>
+        </div>
+        <div class="movie-card" data-title="En Busca de la Felicidad">
+            <img src="images/enbuscadelafelicidad.jpg">
+            <p>En Busca de la Felicidad</p>
+        </div>
+        <div class="movie-card" data-title="Milagros Inesperados">
+            <img src="images/milagrosinesperados.webp">
+            <p>Milagros Inesperados</p>
+        </div>
+        <div class="movie-card" data-title="Heroes">
+            <img src="images/heroes.jpg">
+            <p>Heroes</p>
+        </div>
+        <div class="movie-card" data-title="El Origen">
+            <img src="images/el origen.jpg">
+            <p>El Origen</p>
+        </div>
+        <div class="movie-card" data-title="La Isla">
+            <img src="images/laisla.jpg">
+            <p>La Isla</p>
+        </div>
+        <div class="movie-card" data-title="Los Juegos del Hambre">
+            <img src="images/losjuegosdelhambre.webp">
+            <p>Los Juegos del Hambre</p>
+        </div>
+        <div class="movie-card" data-title="It">
+            <img src="images/it.webp">
+            <p>It</p>
+        </div>
+        <div class="movie-card" data-title="The Secret Window">
+            <img src="images/thesecretwindow.jpg">
+            <p>The Secret Window</p>
+        </div>
     </div>
 </body>
 </html>
