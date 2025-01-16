@@ -4,7 +4,7 @@ body{
     justify-content: center;
     margin-top: 150px
 }
-
+/*Diseño para el buscador*/
 .search-container{
   width: 20%;
   display: flex;
@@ -37,7 +37,7 @@ body .navbar button {
 body .navbar button:hover {
   background-color: rgb(183, 0, 0);
 }
-
+/*Contenedor de películas para el index*/
 .movies-container {
   justify-content: center;
   display: flex;
@@ -47,7 +47,7 @@ body .navbar button:hover {
 header{
     display: flex;
 }
-
+/*Diseño para el menú de navegación*/
 .navbar {
     background-color:#1A1A1D;
     overflow: hidden;
@@ -80,7 +80,7 @@ header{
     flex-direction: row;
     align-items: center;
   }
-
+/*Responsive para el menú de navegación*/
 @media screen and (max-width: 768px) {
 body {
   margin-top: 250px
@@ -114,13 +114,7 @@ body .navbar button {
   margin-top: 10px; 
 }}
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
+/*Diseño para las tarjetas de peliculas*/
 .movie-card {
   max-width: 150px;
   text-align: center;
@@ -147,20 +141,6 @@ body .navbar button {
   margin: 10px 0 0;
   font-size: 16px;
   font-weight: bold;
-}
-
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.hamburger div {
-  width: 25px;
-  height: 3px;
-  background-color: white;
 }
 
 
@@ -203,5 +183,54 @@ body .navbar button {
     text-align: left;
     padding: 10px 20px;
     width: 100%;
+  }
+}
+
+/*Diseño para la segunda swal-alert*/
+.swal-container {
+  max-width: 1200px;  
+  margin: 0 auto; 
+  display: flex;
+}
+
+.swal-image {
+  width: 120%;
+  justify-self: left;
+  margin: 5%;
+}
+
+.swal-text {
+  justify-self: right;
+  text-align: justify;
+  align-self: center;
+}
+
+.swal-cast-container {
+  justify-self: left;
+  text-align: left;
+  margin-right: 5%;
+}
+
+.swal-description-container {
+  justify-self: justify;
+  text-align: left;
+}
+
+.swal-info {
+  display: flex;
+}
+/*Responsive para la segunda swal-alert*/
+@media screen and (max-width: 768px) {
+  .swal-container {
+    width: 80%;
+    max-width: 1200px;  
+    margin: 0 auto; 
+    display: block;
+  }
+
+  .swal-image {
+    max-width: 100%;
+    justify-self: left;
+    margin: 5%;
   }
 }
