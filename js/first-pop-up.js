@@ -1,5 +1,5 @@
 //Map para la información de la primera ventana emergente
-const movies = new Map([
+export const movies = new Map([
     [1, {
         title: "Toy Story",
         imageUrl: "./images/toystory-module.avif",
@@ -105,7 +105,7 @@ const movies = new Map([
 
 
 //Map para la información de la segunda ventana emergente
-const description = new Map([
+export const description = new Map([
     [1, {
         title: "Toy Story",
         imageUrl: "./images/toystory.jpg",
@@ -289,32 +289,31 @@ const description = new Map([
 ]);
 
 
-// Normaliza la busqueda, sin importar tíldes y mayúsculas
-function normalizeString(str) {
+// Define la variable noResultsElement 
+let noResultsElement = null;
+
+// Normaliza la búsqueda
+export function normalizeString(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
-let noResultsElement;
-// Función para el evento de búsqueda
-function handleSearch() {
+// Maneja la búsqueda
+export function handleSearch() {
     if (noResultsElement) {
-        console.log("Deberia eliminar");
-        noResultsElement.remove();
+        noResultsElement.remove(); 
+        noResultsElement = null; 
     }
+
     let cardsCount = 0;
     const query = document.getElementById("movie-search").value;
     const normalizedQuery = normalizeString(query);
 
-    // Obtiene todas las tarjetas de películas
     const movieCards = document.querySelectorAll(".movie-card");
 
     movieCards.forEach(card => {
         const movieTitle = card.getAttribute("data-title");
-
-        // Normaliza el título de la película
         const normalizedTitle = normalizeString(movieTitle);
 
-        // Si el título contiene la búsqueda, muestra la tarjeta, si no se oculta
         if (normalizedTitle.includes(normalizedQuery)) {
             card.style.display = "block";
             cardsCount++;
@@ -322,27 +321,26 @@ function handleSearch() {
             card.style.display = "none";
         }
     });
-    if (cardsCount == 0) {
-        const noResults = document.createElement('p');
-        noResults.classList.add('no-results');
-        noResults.textContent = "No se encontraron películas";
-        noResultsElement = noResults;
-        document.querySelector('#movies-container').appendChild(noResultsElement);
+
+    // Si no se encuentran películas que coincidan, muestra el mensaje de no resultados
+    if (cardsCount === 0) {
+        if (!noResultsElement) {
+            const noResults = document.createElement('p');
+            noResults.classList.add('no-results');
+            noResults.textContent = "No se encontraron películas";
+            noResultsElement = noResults;
+            document.querySelector('#movies-container').appendChild(noResultsElement);
+        }
     }
 }
 
-// Agrega el evento de búsqueda al input
-document.getElementById("movie-search").addEventListener("input", handleSearch);
-
-function showFirstPopup(movie) {
+// Muestra el primer popup
+export function showFirstPopup(movie) {
     return new Promise((resolve, reject) => {
-        console.log("First");
         Swal.fire({
             title: movie.title,
-            html: `
-          <img src="${movie.imageUrl}" width="100%" height="auto" alt="Image">
-          <p><strong>Resumen:</strong> ${movie.resumen}</p>
-        `,
+            html: `<img src="${movie.imageUrl}" width="100%" height="auto" alt="Image">
+                  <p><strong>Resumen:</strong> ${movie.resumen}</p>`,
             imageWidth: 500,
             imageHeight: 250,
             background: '#1A1A1D',
@@ -353,25 +351,18 @@ function showFirstPopup(movie) {
             cancelButtonText: 'Cerrar',
             cancelButtonColor: '#d33',
             showCloseButton: true,
-            closeButtonAriaLabel: 'Cerrar',
             didOpen: () => {
                 const verMasBtn = document.querySelector('.swal2-confirm');
-                // Evento para el botón "Ver Más"
-                verMasBtn.onclick = () => {
-                    resolve();
-                };
+                verMasBtn.onclick = () => resolve();
             },
-            didClose: () => {
-                reject('Cerrado por el usuario');
-            }
+            didClose: () => reject('Cerrado por el usuario')
         });
     });
 }
 
-function showSecondPopup(secondpop) {
+// Muestra el segundo popup
+export function showSecondPopup(secondpop) {
     return new Promise((resolve, reject) => {
-        console.log("Second");
-
         Swal.fire({
             width: 700,
             background: '#1A1A1D',
@@ -379,54 +370,28 @@ function showSecondPopup(secondpop) {
             imageHeight: 250,
             color: '#fff',
             title: secondpop.title,
-            html: `
-          <div class="swal-container">
-            <div class="swal-image">
-              <img src="${secondpop.imageUrl}" width="100%" height="auto" alt="Image">
-            </div>
-            <div class="swal-text">
-              <p><strong>Descripción:</strong> ${secondpop.description}</p>
-              <div class="swal-info"> 
-                <div class="swal-cast-container">
-                  <p><strong>Cast:</strong> ${secondpop.cast}</p>
-                  <p><strong>Duración:</strong> ${secondpop.duration}</p>
-                </div>
-                <div class="swal-description-container">
-                  <p><strong>Género:</strong> ${secondpop.genre}</p>
-                  <p><strong>Fecha de estreno:</strong> ${secondpop.date}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        `,
+            html: `<div class="swal-container">
+                  <div class="swal-image">
+                      <img src="${secondpop.imageUrl}" width="100%" height="auto" alt="Image">
+                  </div>
+                  <div class="swal-text">
+                      <p><strong>Descripción:</strong> ${secondpop.description}</p>
+                      <div class="swal-info"> 
+                          <div class="swal-cast-container">
+                              <p><strong>Cast:</strong> ${secondpop.cast}</p>
+                              <p><strong>Duración:</strong> ${secondpop.duration}</p>
+                          </div>
+                          <div class="swal-description-container">
+                              <p><strong>Género:</strong> ${secondpop.genre}</p>
+                              <p><strong>Fecha de estreno:</strong> ${secondpop.date}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>`,
             confirmButtonText: 'Cerrar',
             confirmButtonColor: '#d33',
             customClass: 'swal-wide',
-            didClose: () => resolve('Cerrado por el usuario') 
+            didClose: () => resolve('Cerrado por el usuario')
         });
     });
 }
-
-//Selecciona las tarjetas de películas
-const movieCards = document.querySelectorAll('.movie-card');
-
-// Evento de clic a cada tarjeta de película
-movieCards.forEach(card => {
-    card.addEventListener('click', async () => {
-        const title = card.getAttribute('data-title');
-
-        // Busca la película en el mapa
-        const movie = [...movies.values()].find(m => m.title.toLowerCase() === title.toLowerCase());
-        const secondpop = [...description.values()].find(m => m.title.toLowerCase() === title.toLowerCase());
-        if (movie && secondpop) {
-            try {
-                // Muestra el primer popup y espera a que el usuario haga clic en "Ver Más"
-                await showFirstPopup(movie);
-                // Muestra el segundo popup
-                await showSecondPopup(secondpop);
-            } catch (error) {
-                console.log("El popup fue cerrado o hubo un error:", error);
-            }
-        }
-    });
-});
